@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Finance Brief</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="#">Student Finance Brief</a>
+        <nav aria-label="Main navigation">
+          <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#archives">Archives</a></li>
+            <li><a href="#topics">Learning Topics</a></li>
+            <li><a href="#spotlights">Stock Spotlights</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <p class="tag">Weekly student-focused market insights</p>
+          <h1>Understand the Market Without the Noise</h1>
+          <p class="subtitle">
+            A clean, practical newsletter for students learning investing,
+            economic trends, and smart money habits.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="archives">
+        <div class="container grid two-col">
+          <article class="card featured-story">
+            <div class="card-head">
+              <span class="badge">Featured Story</span>
+              <time datetime="2026-04-10">April 10, 2026</time>
+            </div>
+            <h2>Why Interest Rates Still Matter for Student Investors</h2>
+            <p>
+              Higher rates can impact borrowing costs, company valuations, and
+              consumer spending. This week’s breakdown explains what those moves
+              can mean for your first portfolio and long-term strategy.
+            </p>
+            <a class="read-more" href="#">Read full story →</a>
+          </article>
+
+          <aside class="card" id="topics">
+            <h2>Learning Topics</h2>
+            <ul class="topic-list">
+              <li>Dollar-Cost Averaging 101</li>
+              <li>How ETFs Work</li>
+              <li>Reading Earnings Reports</li>
+              <li>Risk vs. Reward Basics</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section" id="spotlights">
+        <div class="container">
+          <div class="section-header">
+            <h2>Market Overview</h2>
+            <p>Placeholder tickers for your weekly stock snapshot.</p>
+          </div>
+          <div class="ticker-grid" id="ticker-grid">
+            <article class="ticker-card" data-symbol="AAPL">
+              <h3>AAPL</h3>
+              <p class="company">Apple Inc.</p>
+              <p class="price">$---.--</p>
+              <p class="change neutral">--.--%</p>
+            </article>
+            <article class="ticker-card" data-symbol="MSFT">
+              <h3>MSFT</h3>
+              <p class="company">Microsoft Corp.</p>
+              <p class="price">$---.--</p>
+              <p class="change neutral">--.--%</p>
+            </article>
+            <article class="ticker-card" data-symbol="NVDA">
+              <h3>NVDA</h3>
+              <p class="company">NVIDIA Corp.</p>
+              <p class="price">$---.--</p>
+              <p class="change neutral">--.--%</p>
+            </article>
+            <article class="ticker-card" data-symbol="SPY">
+              <h3>SPY</h3>
+              <p class="company">SPDR S&P 500 ETF</p>
+              <p class="price">$---.--</p>
+              <p class="change neutral">--.--%</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <p>© 2026 Student Finance Brief. Built for curious student investors.</p>
+        <a href="mailto:editor@studentfinancebrief.com">Contact the editor</a>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
