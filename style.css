@@ -503,3 +503,25 @@ h2 {
 .entry-accordion[open] {
   box-shadow: 0 0 0 1px #3f7f60, 0 12px 28px rgba(0, 0, 0, 0.25);
 }
+
+.badge {
+  background: linear-gradient(120deg, var(--accent-soft), var(--teal-soft));
+}
+
+.entry-accordion:nth-child(3n + 1) {
+  border-color: #3f7f60;
+}
+
+.entry-accordion:nth-child(3n + 2) {
+  border-color: #3b6785;
+  background: linear-gradient(160deg, rgba(23, 55, 38, 0.94), rgba(19, 34, 52, 0.7));
+}
+
+.entry-accordion:nth-child(3n + 3) {
+  border-color: #7d6a3c;
+  background: linear-gradient(160deg, rgba(23, 55, 38, 0.94), rgba(48, 41, 24, 0.6));
+}
+
+.learn-more-list a:hover {
+  color: #f0e1a8;
+}
