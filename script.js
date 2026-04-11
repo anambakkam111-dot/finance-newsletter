@@ -185,7 +185,119 @@ async function initStockSpotlights() {
   }
 }
 
+
+const dailyStoryPool = [
+  {
+    title: 'Oil Supply Shock and the Inflation Pass-Through',
+    concept: 'Concept: Cost-Push Inflation',
+    dateNote: 'Daily rotation based on your local date.',
+    paragraphs: [
+      'Event: a supply disruption in energy markets raises crude prices quickly. Because transport, manufacturing, and utilities all depend on energy inputs, companies face higher operating costs almost immediately.',
+      'Concept tie-in: this is a classic cost-push inflation channel. Firms either absorb the higher costs (lower margins) or pass them to consumers (higher prices), which can keep inflation sticky even if demand is only moderate.',
+      'Investor implication: rate-sensitive assets can react if markets expect tighter monetary policy for longer. Students can watch this by comparing energy-sector performance with consumer discretionary and bond yields.'
+    ],
+    diagram: ['Supply shock', 'Input costs rise', 'Consumer prices rise', 'Policy stays tighter']
+  },
+  {
+    title: 'Mega-Cap Acquisition Talks and Valuation Discipline',
+    concept: 'Concept: Merger Arbitrage & Synergy Risk',
+    dateNote: 'Daily rotation based on your local date.',
+    paragraphs: [
+      'Event: a large company explores acquiring a smaller strategic competitor. Headlines often emphasize potential growth and market share gains, which can quickly lift the target’s stock and move the acquirer in the opposite direction.',
+      'Concept tie-in: merger pricing reflects completion probability, expected synergies, and integration risk. If the market believes the deal may face regulatory friction or execution challenges, the spread between offer value and market price can widen.',
+      'Investor implication: not every deal creates value. Students should analyze financing terms, debt impact, and whether projected synergies are realistic or mostly narrative.'
+    ],
+    diagram: ['Deal rumor', 'Target reprices', 'Spread reflects risk', 'Outcome: approve / block']
+  },
+  {
+    title: 'New Tariffs and Corporate Margin Pressure',
+    concept: 'Concept: Price Elasticity & Margin Management',
+    dateNote: 'Daily rotation based on your local date.',
+    paragraphs: [
+      'Event: tariffs are imposed on key imported components. Companies that rely on those inputs must decide whether to absorb costs, substitute suppliers, or raise end prices.',
+      'Concept tie-in: elasticity matters. If customers are sensitive to price changes, firms have limited ability to pass costs through, which can compress margins and weaken earnings growth.',
+      'Investor implication: sectors with high input dependence and low pricing power can underperform in tariff cycles, while firms with strong brands or domestic supply flexibility may hold margins better.'
+    ],
+    diagram: ['Tariff imposed', 'Input cost rises', 'Pricing decision', 'Margin expands or contracts']
+  },
+  {
+    title: 'Regional Bank Stress and Credit Availability',
+    concept: 'Concept: Credit Transmission Mechanism',
+    dateNote: 'Daily rotation based on your local date.',
+    paragraphs: [
+      'Event: concerns about bank balance sheets trigger tighter lending standards, especially for small businesses and real estate borrowers.',
+      'Concept tie-in: even without policy-rate changes, reduced credit supply can slow economic activity. This is the credit transmission channel—financing conditions influence growth and hiring.',
+      'Investor implication: when credit tightens, defensive cash-flow names can outperform while leveraged segments face higher refinancing risk.'
+    ],
+    diagram: ['Bank stress', 'Lending tightens', 'Investment slows', 'Growth cools']
+  }
+];
+
+function drawStoryDiagram(labels) {
+  const svg = document.getElementById('story-diagram');
+  if (!svg) return;
+
+  const boxWidth = 150;
+  const boxHeight = 56;
+  const y = 82;
+  const startX = 20;
+  const gap = 22;
+
+  svg.innerHTML = '';
+  labels.forEach((label, index) => {
+    const x = startX + index * (boxWidth + gap);
+    const fill = index % 2 === 0 ? 'rgba(82, 222, 198, 0.18)' : 'rgba(235, 204, 111, 0.16)';
+
+    svg.insertAdjacentHTML(
+      'beforeend',
+      `<rect x="${x}" y="${y}" rx="10" ry="10" width="${boxWidth}" height="${boxHeight}" fill="${fill}" stroke="#3f7f60" />`
+    );
+    svg.insertAdjacentHTML(
+      'beforeend',
+      `<text x="${x + boxWidth / 2}" y="${y + 32}" text-anchor="middle" fill="#dff5c6" font-size="14" font-family="Inter">${label}</text>`
+    );
+
+    if (index < labels.length - 1) {
+      const arrowX = x + boxWidth + 6;
+      svg.insertAdjacentHTML(
+        'beforeend',
+        `<line x1="${arrowX}" y1="${y + boxHeight / 2}" x2="${arrowX + 12}" y2="${y + boxHeight / 2}" stroke="#79db9e" stroke-width="2" />`
+      );
+      svg.insertAdjacentHTML(
+        'beforeend',
+        `<polygon points="${arrowX + 12},${y + boxHeight / 2} ${arrowX + 7},${y + boxHeight / 2 - 4} ${arrowX + 7},${y + boxHeight / 2 + 4}" fill="#79db9e" />`
+      );
+    }
+  });
+}
+
+function initDailyMainStory() {
+  const titleEl = document.getElementById('main-story-title');
+  if (!titleEl) return;
+
+  const conceptEl = document.getElementById('main-story-concept');
+  const body1 = document.getElementById('main-story-body-1');
+  const body2 = document.getElementById('main-story-body-2');
+  const body3 = document.getElementById('main-story-body-3');
+  const dateNote = document.getElementById('story-date-note');
+
+  const daySeed = Math.floor(Date.now() / 86400000);
+  const story = dailyStoryPool[daySeed % dailyStoryPool.length];
+
+  titleEl.textContent = story.title;
+  conceptEl.textContent = story.concept;
+  body1.textContent = story.paragraphs[0];
+  body2.textContent = story.paragraphs[1];
+  body3.textContent = story.paragraphs[2];
+  if (dateNote) {
+    dateNote.textContent = `Updated for ${new Date().toLocaleDateString()}.`;
+  }
+
+  drawStoryDiagram(story.diagram);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initVocabToggle();
   initStockSpotlights();
+  initDailyMainStory();
 });
