@@ -32,7 +32,10 @@
         <div class="container">
           <p class="tag">Weekly Watchlist</p>
           <h1>Stock Spotlights</h1>
-          <p class="subtitle">Quick-glance placeholder tickers for your market overview section.</p>
+          <p class="subtitle">
+            Live quotes and a rotating daily featured list across key sectors.
+          </p>
+          <p class="data-note" id="data-note">Fetching live market data…</p>
         </div>
       </section>
 
@@ -40,7 +43,7 @@
         <div class="container">
           <div class="section-header">
             <h2>Market Overview</h2>
-            <p>Major large-cap and index signals for this issue.</p>
+            <p>Large-cap and index pulse for this issue.</p>
           </div>
           <div class="ticker-grid" id="ticker-grid">
             <article class="ticker-card" data-symbol="AAPL">
@@ -68,6 +71,16 @@
               <p class="change neutral">--.--%</p>
             </article>
           </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Daily Sector Feature Picks</h2>
+            <p>One featured stock per sector, rotated automatically by date.</p>
+          </div>
+          <div class="featured-grid" id="featured-grid"></div>
         </div>
       </section>
     </main>

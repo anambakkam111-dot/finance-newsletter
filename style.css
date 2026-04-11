@@ -275,3 +275,63 @@ h2 {
     padding: 0.8rem 0;
   }
 }
+
+.data-note {
+  margin-top: 0.6rem;
+  color: #baf2ce;
+  font-size: 0.92rem;
+}
+
+.vocab-grid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(240px, 1fr));
+  gap: 0.9rem;
+}
+
+.vocab-item {
+  padding: 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(14, 38, 26, 0.55);
+}
+
+.vocab-item h3 {
+  margin: 0;
+  color: #c8ffdd;
+}
+
+.vocab-item p {
+  margin: 0.45rem 0 0;
+  color: var(--muted);
+}
+
+.timeline {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.event-card h3,
+.featured-card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.event-card p {
+  margin: 0.45rem 0;
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(200px, 1fr));
+  gap: 0.9rem;
+}
+
+@media (max-width: 900px) {
+  .vocab-grid,
+  .timeline,
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
+}
