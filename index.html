@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Student Finance Brief</title>
+    <title>Student Finance Brief | Home</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,13 +15,13 @@
   <body>
     <header class="site-header">
       <div class="container nav-wrap">
-        <a class="brand" href="#">Student Finance Brief</a>
+        <a class="brand" href="index.html">Student Finance Brief</a>
         <nav aria-label="Main navigation">
           <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#archives">Archives</a></li>
-            <li><a href="#topics">Learning Topics</a></li>
-            <li><a href="#spotlights">Stock Spotlights</a></li>
+            <li><a class="active" href="index.html">Home</a></li>
+            <li><a href="archives.html">Archives</a></li>
+            <li><a href="learning-topics.html">Learning Topics</a></li>
+            <li><a href="stock-spotlights.html">Stock Spotlights</a></li>
           </ul>
         </nav>
       </div>
@@ -39,12 +39,12 @@
         </div>
       </section>
 
-      <section class="section" id="archives">
+      <section class="section">
         <div class="container grid two-col">
           <article class="card featured-story">
             <div class="card-head">
               <span class="badge">Featured Story</span>
-              <time datetime="2026-04-10">April 10, 2026</time>
+              <time datetime="2026-04-11">April 11, 2026</time>
             </div>
             <h2>Why Interest Rates Still Matter for Student Investors</h2>
             <p>
@@ -52,53 +52,19 @@
               consumer spending. This week’s breakdown explains what those moves
               can mean for your first portfolio and long-term strategy.
             </p>
-            <a class="read-more" href="#">Read full story →</a>
+            <a class="read-more" href="archives.html">Read full story →</a>
           </article>
 
-          <aside class="card" id="topics">
-            <h2>Learning Topics</h2>
-            <ul class="topic-list">
-              <li>Dollar-Cost Averaging 101</li>
-              <li>How ETFs Work</li>
-              <li>Reading Earnings Reports</li>
-              <li>Risk vs. Reward Basics</li>
-            </ul>
+          <aside class="card">
+            <h2>Start Here</h2>
+            <p>
+              New reader? Jump into beginner-friendly breakdowns, then check
+              today’s stock snapshots.
+            </p>
+            <a class="inline-link" href="learning-topics.html">Explore learning topics →</a>
+            <br />
+            <a class="inline-link" href="stock-spotlights.html">View stock spotlights →</a>
           </aside>
-        </div>
-      </section>
-
-      <section class="section" id="spotlights">
-        <div class="container">
-          <div class="section-header">
-            <h2>Market Overview</h2>
-            <p>Placeholder tickers for your weekly stock snapshot.</p>
-          </div>
-          <div class="ticker-grid" id="ticker-grid">
-            <article class="ticker-card" data-symbol="AAPL">
-              <h3>AAPL</h3>
-              <p class="company">Apple Inc.</p>
-              <p class="price">$---.--</p>
-              <p class="change neutral">--.--%</p>
-            </article>
-            <article class="ticker-card" data-symbol="MSFT">
-              <h3>MSFT</h3>
-              <p class="company">Microsoft Corp.</p>
-              <p class="price">$---.--</p>
-              <p class="change neutral">--.--%</p>
-            </article>
-            <article class="ticker-card" data-symbol="NVDA">
-              <h3>NVDA</h3>
-              <p class="company">NVIDIA Corp.</p>
-              <p class="price">$---.--</p>
-              <p class="change neutral">--.--%</p>
-            </article>
-            <article class="ticker-card" data-symbol="SPY">
-              <h3>SPY</h3>
-              <p class="company">SPDR S&P 500 ETF</p>
-              <p class="price">$---.--</p>
-              <p class="change neutral">--.--%</p>
-            </article>
-          </div>
         </div>
       </section>
     </main>
@@ -109,7 +75,5 @@
         <a href="mailto:editor@studentfinancebrief.com">Contact the editor</a>
       </div>
     </footer>
-
-    <script src="script.js"></script>
   </body>
 </html>
