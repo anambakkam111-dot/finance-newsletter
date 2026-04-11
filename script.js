@@ -141,7 +141,24 @@ async function fetchLiveQuotes(symbols) {
   }, new Map());
 }
 
+function initVocabToggle() {
+  const button = document.getElementById('toggle-vocab');
+  const vocabMore = document.getElementById('vocab-more');
+  if (!button || !vocabMore) return;
+
+  button.addEventListener('click', () => {
+    const expanded = button.getAttribute('aria-expanded') === 'true';
+    button.setAttribute('aria-expanded', String(!expanded));
+    vocabMore.hidden = expanded;
+    button.textContent = expanded ? 'See more terms' : 'See fewer terms';
+  });
+}
+
 async function initStockSpotlights() {
+  const hasTickerGrid = Boolean(document.getElementById('ticker-grid'));
+  const hasFeaturedGrid = Boolean(document.getElementById('featured-grid'));
+  if (!hasTickerGrid && !hasFeaturedGrid) return;
+
   const note = document.getElementById('data-note');
   const featuredStocks = getDailyFeaturedStocks();
   const allSymbols = [...new Set([...marketOverviewSymbols, ...featuredStocks.map((s) => s.symbol)])];
@@ -155,7 +172,7 @@ async function initStockSpotlights() {
       note.textContent = `Live quotes updated ${new Date().toLocaleTimeString([], {
         hour: 'numeric',
         minute: '2-digit'
-      })}.`; 
+      })}.`;
     }
   } catch (error) {
     renderMarketOverview(new Map());
@@ -168,4 +185,7 @@ async function initStockSpotlights() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', initStockSpotlights);
+document.addEventListener('DOMContentLoaded', () => {
+  initVocabToggle();
+  initStockSpotlights();
+});
