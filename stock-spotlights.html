@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Finance Brief | Stock Spotlights</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html">Student Finance Brief</a>
+        <nav aria-label="Main navigation">
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="archives.html">Archives</a></li>
+            <li><a href="learning-topics.html">Learning Topics</a></li>
+            <li><a class="active" href="stock-spotlights.html">Stock Spotlights</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="container">
+          <p class="tag">Weekly Watchlist</p>
+          <h1>Stock Spotlights</h1>
+          <p class="subtitle">Quick-glance placeholder tickers for your market overview section.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Market Overview</h2>
+            <p>Major large-cap and index signals for this issue.</p>
+          </div>
+          <div class="ticker-grid" id="ticker-grid">
+            <article class="ticker-card" data-symbol="AAPL">
+              <h3>AAPL</h3>
+              <p class="company">Apple Inc.</p>
+              <p class="price">$---.--</p>
+              <p class="change neutral">--.--%</p>
+            </article>
+            <article class="ticker-card" data-symbol="MSFT">
+              <h3>MSFT</h3>
+              <p class="company">Microsoft Corp.</p>
+              <p class="price">$---.--</p>
+              <p class="change neutral">--.--%</p>
+            </article>
+            <article class="ticker-card" data-symbol="NVDA">
+              <h3>NVDA</h3>
+              <p class="company">NVIDIA Corp.</p>
+              <p class="price">$---.--</p>
+              <p class="change neutral">--.--%</p>
+            </article>
+            <article class="ticker-card" data-symbol="SPY">
+              <h3>SPY</h3>
+              <p class="company">SPDR S&P 500 ETF</p>
+              <p class="price">$---.--</p>
+              <p class="change neutral">--.--%</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <p>© 2026 Student Finance Brief. Built for curious student investors.</p>
+        <a href="mailto:editor@studentfinancebrief.com">Contact the editor</a>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
