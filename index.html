@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Finance Brief | Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html">Student Finance Brief</a>
+        <nav aria-label="Main navigation">
+          <ul class="nav-links">
+            <li><a class="active" href="index.html">Home</a></li>
+            <li><a href="archives.html">Archives</a></li>
+            <li><a href="learning-topics.html">Learning Topics</a></li>
+            <li><a href="stock-spotlights.html">Stock Spotlights</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <p class="tag">Weekly student-focused market insights</p>
+          <h1>Understand the Market Without the Noise</h1>
+          <p class="subtitle">
+            A clean, practical newsletter for students learning investing,
+            economic trends, and smart money habits.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container grid two-col">
+          <article class="card featured-story">
+            <div class="card-head">
+              <span class="badge">Featured Story</span>
+              <time datetime="2026-04-11">April 11, 2026</time>
+            </div>
+            <h2>Why Interest Rates Still Matter for Student Investors</h2>
+            <p>
+              Higher rates can impact borrowing costs, company valuations, and
+              consumer spending. This week’s breakdown explains what those moves
+              can mean for your first portfolio and long-term strategy.
+            </p>
+            <a class="read-more" href="archives.html">Read full story →</a>
+          </article>
+
+          <aside class="card">
+            <h2>Start Here</h2>
+            <p>
+              New reader? Jump into beginner-friendly breakdowns, then check
+              today’s stock snapshots.
+            </p>
+            <a class="inline-link" href="learning-topics.html">Explore learning topics →</a>
+            <br />
+            <a class="inline-link" href="stock-spotlights.html">View stock spotlights →</a>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <article class="card main-story-card">
+            <div class="section-header">
+              <h2 id="main-story-title">Loading daily story…</h2>
+              <p id="story-date-note">Updates automatically by date.</p>
+            </div>
+
+            <div id="main-story-content" class="long-story"></div>
+
+            <div class="diagram-wrap">
+              <h4>Transmission Flow</h4>
+              <svg id="story-diagram" viewBox="0 0 720 220" role="img" aria-label="Concept flow diagram"></svg>
+            </div>
+
+            <div class="diagram-wrap">
+              <h4>Supporting Statistics Snapshot</h4>
+              <svg id="story-stats-chart" viewBox="0 0 720 260" role="img" aria-label="Statistics chart"></svg>
+            </div>
+
+            <div class="financial-bottom" id="main-story-financial"></div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <p>© 2026 Student Finance Brief. Built for curious student investors.</p>
+        <a href="mailto:editor@studentfinancebrief.com">Contact the editor</a>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
