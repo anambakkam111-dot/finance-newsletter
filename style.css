@@ -525,3 +525,44 @@ h2 {
 .learn-more-list a:hover {
   color: #f0e1a8;
 }
+
+.long-story p {
+  margin: 0.7rem 0;
+  color: #d7e9dd;
+}
+
+.financial-bottom {
+  margin-top: 1rem;
+  padding: 0.85rem;
+  border: 1px solid #3f7f60;
+  border-radius: 12px;
+  background: rgba(18, 45, 30, 0.6);
+}
+
+#story-stats-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.sector-meta {
+  margin-top: 0.8rem;
+  padding-top: 0.7rem;
+  border-top: 1px dashed var(--border);
+  color: #c5dfce;
+  font-size: 0.9rem;
+}
+
+.sector-meta p {
+  margin: 0.3rem 0;
+}
+
+.daily-log {
+  display: grid;
+  gap: 0.8rem;
+  margin-top: 0.7rem;
+}
+
+.log-item h3 {
+  margin: 0 0 0.35rem;
+}
