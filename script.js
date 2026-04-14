@@ -231,8 +231,8 @@ function initVocabToggle() {
   });
 }
 
-function drawFlowDiagram(labels) {
-  const svg = document.getElementById('story-diagram');
+function drawFlowDiagram(labels, elementId = 'story-diagram') {
+  const svg = document.getElementById(elementId);
   if (!svg) return;
 
   svg.innerHTML = '';
@@ -257,8 +257,8 @@ function drawFlowDiagram(labels) {
   });
 }
 
-function drawStatsChart(stats) {
-  const svg = document.getElementById('story-stats-chart');
+function drawStatsChart(stats, elementId = 'story-stats-chart') {
+  const svg = document.getElementById(elementId);
   if (!svg) return;
   svg.innerHTML = '';
 
@@ -335,14 +335,29 @@ function initDailyMainStory() {
   titleEl.textContent = story.title;
   if (dateNote) dateNote.textContent = `Updated for ${new Date().toLocaleDateString()}.`;
   if (content) {
-    content.innerHTML = story.paragraphs.map((p) => `<p>${p}</p>`).join('');
+    content.innerHTML = `
+      <p>${story.paragraphs[0]}</p>
+      <p>${story.paragraphs[1]}</p>
+      <figure class="inline-visual">
+        <figcaption>The chain from real-world event to market effect.</figcaption>
+        <svg id="story-diagram" viewBox="0 0 720 220" role="img" aria-label="Story flow diagram"></svg>
+      </figure>
+      <p>${story.paragraphs[2]}</p>
+      <p>${story.paragraphs[3]}</p>
+      <figure class="inline-visual">
+        <figcaption>Supporting indicators that help frame risk and valuation pressure.</figcaption>
+        <svg id="story-stats-chart" viewBox="0 0 720 260" role="img" aria-label="Story statistics chart"></svg>
+      </figure>
+      <p>${story.paragraphs[4]}</p>
+      <p>${story.paragraphs[5]}</p>
+    `;
   }
   if (financial) {
     financial.innerHTML = `<h4>Why this matters financially</h4><p>${story.financialImportance}</p>`;
   }
 
-  drawFlowDiagram(story.diagram);
-  drawStatsChart(story.stats);
+  drawFlowDiagram(story.diagram, 'story-diagram');
+  drawStatsChart(story.stats, 'story-stats-chart');
 }
 
 async function initStockSpotlights() {

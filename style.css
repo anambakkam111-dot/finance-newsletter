@@ -1,18 +1,18 @@
 :root {
-  --bg: #07140d;
-  --bg-2: #0f1e16;
-  --bg-3: #10261b;
-  --bg-accent: #0c2417;
-  --panel: #10291b;
-  --panel-2: #173726;
+  --bg: #050706;
+  --bg-2: #0a120e;
+  --bg-3: #122018;
+  --bg-accent: #0d1a13;
+  --panel: #0d1813;
+  --panel-2: #13241c;
   --text: #e8f7ee;
   --muted: #9bbda8;
-  --accent: #4fce79;
-  --accent-strong: #27b45c;
+  --accent: #49b36d;
+  --accent-strong: #3a9a5a;
   --accent-soft: rgba(79, 206, 121, 0.2);
-  --teal-soft: rgba(82, 222, 198, 0.16);
-  --gold-soft: rgba(235, 204, 111, 0.16);
-  --violet-soft: rgba(157, 132, 255, 0.16);
+  --teal-soft: rgba(73, 179, 109, 0.18);
+  --gold-soft: rgba(73, 179, 109, 0.1);
+  --violet-soft: rgba(19, 36, 28, 0.45);
   --border: #2b5a40;
   --positive: #70f5a3;
   --negative: #ff7d8d;
@@ -28,8 +28,8 @@ body {
   margin: 0;
   font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   background:
-    radial-gradient(circle at 15% 0%, rgba(82, 222, 198, 0.08), transparent 35%),
-    radial-gradient(circle at 85% 10%, rgba(157, 132, 255, 0.07), transparent 40%),
+    radial-gradient(circle at 15% 0%, rgba(73, 179, 109, 0.12), transparent 35%),
+    radial-gradient(circle at 85% 10%, rgba(37, 69, 50, 0.22), transparent 42%),
     radial-gradient(circle at top, var(--bg-accent) 0%, var(--bg) 48%);
   color: var(--text);
   line-height: 1.6;
@@ -505,7 +505,7 @@ h2 {
 }
 
 .badge {
-  background: linear-gradient(120deg, var(--accent-soft), var(--teal-soft));
+  background: linear-gradient(120deg, var(--accent-soft), rgba(73, 179, 109, 0.3));
 }
 
 .entry-accordion:nth-child(3n + 1) {
@@ -513,17 +513,17 @@ h2 {
 }
 
 .entry-accordion:nth-child(3n + 2) {
-  border-color: #3b6785;
-  background: linear-gradient(160deg, rgba(23, 55, 38, 0.94), rgba(19, 34, 52, 0.7));
+  border-color: #346247;
+  background: linear-gradient(160deg, rgba(19, 36, 28, 0.95), rgba(12, 20, 16, 0.95));
 }
 
 .entry-accordion:nth-child(3n + 3) {
-  border-color: #7d6a3c;
-  background: linear-gradient(160deg, rgba(23, 55, 38, 0.94), rgba(48, 41, 24, 0.6));
+  border-color: #2d5740;
+  background: linear-gradient(160deg, rgba(19, 36, 28, 0.95), rgba(9, 15, 12, 0.95));
 }
 
 .learn-more-list a:hover {
-  color: #f0e1a8;
+  color: #bff0cf;
 }
 
 .long-story p {
@@ -565,4 +565,18 @@ h2 {
 
 .log-item h3 {
   margin: 0 0 0.35rem;
+}
+
+.inline-visual {
+  margin: 1rem 0;
+  padding: 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(12, 28, 20, 0.65);
+}
+
+.inline-visual figcaption {
+  margin-bottom: 0.45rem;
+  color: #b7d7c1;
+  font-size: 0.9rem;
 }
