@@ -1,19 +1,19 @@
 :root {
-  --bg: #050706;
-  --bg-2: #0a120e;
-  --bg-3: #122018;
-  --bg-accent: #0d1a13;
-  --panel: #0d1813;
-  --panel-2: #13241c;
+  --bg: #020202;
+  --bg-2: #070807;
+  --bg-3: #0d120f;
+  --bg-accent: #0a0d0b;
+  --panel: #0a0d0b;
+  --panel-2: #101512;
   --text: #e8f7ee;
   --muted: #9bbda8;
-  --accent: #49b36d;
-  --accent-strong: #3a9a5a;
-  --accent-soft: rgba(79, 206, 121, 0.2);
-  --teal-soft: rgba(73, 179, 109, 0.18);
-  --gold-soft: rgba(73, 179, 109, 0.1);
+  --accent: #3ea462;
+  --accent-strong: #318650;
+  --accent-soft: rgba(62, 164, 98, 0.18);
+  --teal-soft: rgba(62, 164, 98, 0.14);
+  --gold-soft: rgba(62, 164, 98, 0.08);
   --violet-soft: rgba(19, 36, 28, 0.45);
-  --border: #2b5a40;
+  --border: #234131;
   --positive: #70f5a3;
   --negative: #ff7d8d;
   --neutral: #b9d6c3;
@@ -28,8 +28,8 @@ body {
   margin: 0;
   font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   background:
-    radial-gradient(circle at 15% 0%, rgba(73, 179, 109, 0.12), transparent 35%),
-    radial-gradient(circle at 85% 10%, rgba(37, 69, 50, 0.22), transparent 42%),
+    radial-gradient(circle at 18% 0%, rgba(62, 164, 98, 0.12), transparent 33%),
+    radial-gradient(circle at 82% 12%, rgba(30, 49, 38, 0.22), transparent 44%),
     radial-gradient(circle at top, var(--bg-accent) 0%, var(--bg) 48%);
   color: var(--text);
   line-height: 1.6;
@@ -578,5 +578,25 @@ h2 {
 .inline-visual figcaption {
   margin-bottom: 0.45rem;
   color: #b7d7c1;
+  font-size: 0.9rem;
+}
+
+.event-graphic {
+  margin: 1rem 0;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(8, 14, 11, 0.85);
+}
+
+.event-graphic svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.event-graphic figcaption {
+  margin-top: 0.45rem;
+  color: #b0d5be;
   font-size: 0.9rem;
 }

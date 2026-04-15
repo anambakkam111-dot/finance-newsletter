@@ -353,7 +353,7 @@ function initDailyMainStory() {
     `;
   }
   if (financial) {
-    financial.innerHTML = `<h4>Why this matters financially</h4><p>${story.financialImportance}</p>`;
+    financial.innerHTML = `<h4>Market significance</h4><p>${story.financialImportance}</p>`;
   }
 
   drawFlowDiagram(story.diagram, 'story-diagram');
