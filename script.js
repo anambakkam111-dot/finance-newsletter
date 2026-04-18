@@ -244,15 +244,35 @@ function drawFlowDiagram(labels, elementId = 'story-diagram') {
 
   labels.forEach((label, index) => {
     const x = startX + index * (boxWidth + gap);
-    const fill = index % 2 === 0 ? 'rgba(82, 222, 198, 0.18)' : 'rgba(235, 204, 111, 0.16)';
+    const fill = index % 2 === 0 ? 'rgba(145, 145, 145, 0.2)' : 'rgba(105, 105, 105, 0.2)';
 
-    svg.insertAdjacentHTML('beforeend', `<rect x="${x}" y="${y}" rx="10" ry="10" width="${boxWidth}" height="${boxHeight}" fill="${fill}" stroke="#3f7f60" />`);
-    svg.insertAdjacentHTML('beforeend', `<text x="${x + boxWidth / 2}" y="${y + 32}" text-anchor="middle" fill="#dff5c6" font-size="14" font-family="Inter">${label}</text>`);
+    svg.insertAdjacentHTML('beforeend', `<rect x="${x}" y="${y}" rx="10" ry="10" width="${boxWidth}" height="${boxHeight}" fill="${fill}" stroke="#4a4a4a" />`);
+
+    const words = label.split(' ');
+    const lines = [];
+    let current = '';
+    words.forEach((w) => {
+      const candidate = current ? `${current} ${w}` : w;
+      if (candidate.length <= 14) {
+        current = candidate;
+      } else {
+        if (current) lines.push(current);
+        current = w;
+      }
+    });
+    if (current) lines.push(current);
+
+    const lineHeight = 14;
+    const startY = y + 32 - ((lines.length - 1) * lineHeight) / 2;
+    const tspans = lines
+      .map((line, i) => `<tspan x="${x + boxWidth / 2}" y="${startY + i * lineHeight}">${line}</tspan>`)
+      .join('');
+    svg.insertAdjacentHTML('beforeend', `<text text-anchor="middle" fill="#e2e2e2" font-size="12" font-family="Inter">${tspans}</text>`);
 
     if (index < labels.length - 1) {
       const ax = x + boxWidth + 6;
-      svg.insertAdjacentHTML('beforeend', `<line x1="${ax}" y1="${y + boxHeight / 2}" x2="${ax + 12}" y2="${y + boxHeight / 2}" stroke="#79db9e" stroke-width="2" />`);
-      svg.insertAdjacentHTML('beforeend', `<polygon points="${ax + 12},${y + boxHeight / 2} ${ax + 7},${y + boxHeight / 2 - 4} ${ax + 7},${y + boxHeight / 2 + 4}" fill="#79db9e" />`);
+      svg.insertAdjacentHTML('beforeend', `<line x1="${ax}" y1="${y + boxHeight / 2}" x2="${ax + 12}" y2="${y + boxHeight / 2}" stroke="#b8b8b8" stroke-width="2" />`);
+      svg.insertAdjacentHTML('beforeend', `<polygon points="${ax + 12},${y + boxHeight / 2} ${ax + 7},${y + boxHeight / 2 - 4} ${ax + 7},${y + boxHeight / 2 + 4}" fill="#b8b8b8" />`);
     }
   });
 }
@@ -270,11 +290,11 @@ function drawStatsChart(stats, elementId = 'story-stats-chart') {
     const x = 50 + i * (barWidth + gap);
     const h = (item.value / max) * 150;
     const y = 200 - h;
-    const fill = i % 2 === 0 ? 'rgba(94, 224, 149, 0.65)' : 'rgba(120, 170, 255, 0.62)';
+    const fill = i % 2 === 0 ? 'rgba(170, 170, 170, 0.65)' : 'rgba(120, 120, 120, 0.62)';
 
     svg.insertAdjacentHTML('beforeend', `<rect x="${x}" y="${y}" width="${barWidth}" height="${h}" rx="8" fill="${fill}" />`);
-    svg.insertAdjacentHTML('beforeend', `<text x="${x + barWidth / 2}" y="215" text-anchor="middle" fill="#cde9d7" font-size="12" font-family="Inter">${item.label}</text>`);
-    svg.insertAdjacentHTML('beforeend', `<text x="${x + barWidth / 2}" y="${y - 8}" text-anchor="middle" fill="#e8f7ee" font-size="12" font-family="Inter">${item.value}</text>`);
+    svg.insertAdjacentHTML('beforeend', `<text x="${x + barWidth / 2}" y="215" text-anchor="middle" fill="#d5d5d5" font-size="12" font-family="Inter">${item.label}</text>`);
+    svg.insertAdjacentHTML('beforeend', `<text x="${x + barWidth / 2}" y="${y - 8}" text-anchor="middle" fill="#f1f1f1" font-size="12" font-family="Inter">${item.value}</text>`);
   });
 }
 
