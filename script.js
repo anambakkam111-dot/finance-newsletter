@@ -119,7 +119,7 @@ const dailyStoryPool = [
       'Markets monitor this through bank funding costs, lending surveys, and credit-spread behavior. A widening spread environment can signal that risk appetite is deteriorating before macro data fully reflects the slowdown.',
       'From a portfolio perspective, quality balance sheets and stable cash-flow profiles usually gain relative strength during credit-tightening periods. Highly leveraged models face refinancing risk if capital becomes more selective.',
       'For students, the key takeaway is that financial conditions are broader than headline policy rates. The same benchmark rate can feel very different in the real economy depending on credit availability and lender confidence.',
-      'Understanding transmission helps explain why markets sometimes weaken before hard data does: investors are pricing tomorrow’s financing constraints today.'
+      'Understanding transmission helps explain why markets sometimes weaken before hard data does: investors are pricing tomorrow\'s financing constraints today.'
     ],
     financialImportance: 'Financially, tighter credit can pressure small-cap and leveraged segments first, while defensive sectors and high-quality cash generators often hold up better.',
     diagram: ['Bank stress rises', 'Lending standards tighten', 'Investment slows', 'Growth cools'],
@@ -132,13 +132,36 @@ const dailyStoryPool = [
   }
 ];
 
+const QUOTE_CACHE_KEY = 'sfb_quote_cache';
+const QUOTE_CACHE_TTL = 5 * 60 * 1000;
+
+function getCachedQuotes(symbols) {
+  try {
+    const cached = JSON.parse(localStorage.getItem(QUOTE_CACHE_KEY) || 'null');
+    if (!cached || Date.now() - cached.timestamp > QUOTE_CACHE_TTL) return null;
+    const map = new Map(Object.entries(cached.data));
+    if (!symbols.every((s) => map.has(s))) return null;
+    return map;
+  } catch {
+    return null;
+  }
+}
+
+function setCachedQuotes(quoteMap) {
+  try {
+    const data = Object.fromEntries(quoteMap);
+    localStorage.setItem(QUOTE_CACHE_KEY, JSON.stringify({ timestamp: Date.now(), data }));
+  } catch {}
+}
+
 function formatCurrency(value) {
   return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
 }
 
 function formatChange(value) {
   const sign = value > 0 ? '+' : '';
-  return `${sign}${value.toFixed(2)}%`;
+  const arrow = value > 0 ? '▲ ' : value < 0 ? '▼ ' : '';
+  return `${arrow}${sign}${value.toFixed(2)}%`;
 }
 
 function setChangeClass(el, value) {
@@ -228,6 +251,52 @@ function initVocabToggle() {
     button.setAttribute('aria-expanded', String(!expanded));
     vocabMore.hidden = expanded;
     button.textContent = expanded ? 'See more terms' : 'See fewer terms';
+  });
+}
+
+function initVocabSearch() {
+  const input = document.getElementById('vocab-search');
+  if (!input) return;
+
+  const vocabMore = document.getElementById('vocab-more');
+  const toggleBtn = document.getElementById('toggle-vocab');
+
+  input.addEventListener('input', () => {
+    const query = input.value.toLowerCase().trim();
+    const allItems = document.querySelectorAll('.vocab-item');
+
+    if (query) {
+      if (vocabMore) vocabMore.hidden = false;
+      if (toggleBtn) toggleBtn.style.display = 'none';
+    } else {
+      if (vocabMore) vocabMore.hidden = true;
+      if (toggleBtn) {
+        toggleBtn.style.display = '';
+        toggleBtn.setAttribute('aria-expanded', 'false');
+        toggleBtn.textContent = 'See more terms';
+      }
+    }
+
+    let visibleCount = 0;
+    allItems.forEach((item) => {
+      const term = item.querySelector('h3')?.textContent.toLowerCase() || '';
+      const def = item.querySelector('p')?.textContent.toLowerCase() || '';
+      const matches = !query || term.includes(query) || def.includes(query);
+      item.style.display = matches ? '' : 'none';
+      if (matches) visibleCount++;
+    });
+
+    const noResults = document.getElementById('vocab-no-results');
+    if (noResults) noResults.hidden = visibleCount > 0;
+  });
+}
+
+function initActiveNav() {
+  const filename = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav-links a').forEach((link) => {
+    const href = link.getAttribute('href');
+    const isActive = href === filename || (filename === '' && href === 'index.html');
+    link.classList.toggle('active', isActive);
   });
 }
 
@@ -389,8 +458,20 @@ async function initStockSpotlights() {
   const featuredStocks = getDailyFeaturedStocks();
   const allSymbols = [...new Set([...marketOverviewSymbols, ...featuredStocks.map((s) => s.symbol)])];
 
+  const cached = getCachedQuotes(allSymbols);
+  if (cached) {
+    renderMarketOverview(cached);
+    renderFeaturedGrid(featuredStocks, cached);
+    if (note) {
+      const age = Math.round((Date.now() - JSON.parse(localStorage.getItem(QUOTE_CACHE_KEY)).timestamp) / 60000);
+      note.textContent = `Quotes cached ${age === 0 ? 'just now' : `${age} min ago`}. Refreshes every 5 minutes.`;
+    }
+    return;
+  }
+
   try {
     const quoteMap = await fetchLiveQuotes(allSymbols);
+    setCachedQuotes(quoteMap);
     renderMarketOverview(quoteMap);
     renderFeaturedGrid(featuredStocks, quoteMap);
     if (note) note.textContent = `Live quotes updated ${new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}.`;
@@ -403,7 +484,9 @@ async function initStockSpotlights() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  initActiveNav();
   initVocabToggle();
+  initVocabSearch();
   initDailyMainStory();
   renderStoryArchiveLog();
   initStockSpotlights();
