@@ -20,7 +20,7 @@
           <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="archives.html">Archives</a></li>
-            <li><a class="active" href="learning-topics.html">Learning Topics</a></li>
+            <li><a href="learning-topics.html">Learning Topics</a></li>
             <li><a href="stock-spotlights.html">Stock Spotlights</a></li>
           </ul>
         </nav>
@@ -46,6 +46,17 @@
               <h2>Vocab Vault</h2>
               <p>Core financial terms for beginners and advanced student readers.</p>
             </div>
+            <div class="vocab-search-wrap">
+              <input
+                type="search"
+                id="vocab-search"
+                class="vocab-search"
+                placeholder="Search terms…"
+                aria-label="Search vocabulary terms"
+                autocomplete="off"
+              />
+            </div>
+            <p id="vocab-no-results" class="subtitle" hidden>No terms match your search.</p>
             <div class="vocab-grid" id="vocab-grid">
               <div class="vocab-item"><h3>APR</h3><p>Annual percentage rate; yearly interest charged for credit use.</p></div>
               <div class="vocab-item"><h3>Asset</h3><p>Something with economic value that can produce return.</p></div>
